@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {globalStyles} from './styles/global'
+import Card from '../shared/card'
 
 import {
     StyleSheet,
@@ -13,10 +14,10 @@ import {
 export default function Home({navigation}){
 
     const [reviews, setReviews] = useState([
-        {title:'Zelda,Bread of Fresh Air',rating: 5,body:'lorem ipsum',key:'1'},
+        {title:'ZZZZelda,Bread of Fresh Air',rating: 1,body:'lorem ipsum',key:'1'},
         {title:'Gota,how prest prity',rating: 5,body:'lorem ipsum',key:'2'},
-        {title:'Camel Case,Bread of Fresh Air',rating: 4,body:'lorem ipsum',key:'3'},
-        {title:'Nuew Zeland,Bread of Fresh Air',rating: 6,body:'lorem ipsum',key:'4'}
+        {title:'Camel Case,Bread of Fresh Air',rating:3,body:'lorem ipsum',key:'3'},
+        {title:'Nuew Zeland,Bread of Fresh Air',rating: 2,body:'lorem ipsum',key:'4'}
     ])
 
     const pressHandler =()=>{
@@ -29,8 +30,10 @@ export default function Home({navigation}){
                   <FlatList
                   data={reviews}
                   renderItem={({item})=>(
-                      <TouchableOpacity>
-                         <Text style={globalStyles.title}>{item.title}</Text>
+                      <TouchableOpacity onPress={()=> navigation.navigate('ReviewDetails',item)}>
+                      <Card>
+                      <Text style={globalStyles.title}>{item.title}</Text>
+                      </Card>
                       </TouchableOpacity>
                   )}
                   />
